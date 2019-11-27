@@ -6,6 +6,7 @@ var button;
 var op = 0;
 var opText = 255;
 var opImg = 0;
+var i = 0;
 
 function preload() {
   sigla = loadSound('assets/TG1_bumper.mp3')
@@ -21,17 +22,16 @@ function setup() {
   analyzer = new p5.Amplitude();
   analyzer.setInput(sigla);
 
-  pixelDensity(0.9)
 
   //button to let the intro (and also sound) play
   button = createButton("LET'S GET IT STARTED");
   button.style('background-color', 'black');
   button.style('color', 'gold')
   button.style('padding', '15px');
-  button.style('font-family', font)
+  button.style('font-family', 'retro')
   button.style('border', '5px solid gold');
   button.style('cursor', 'pointer')
-  button.position(windowWidth / 2 - 80, windowHeight / 2 + windowHeight / 10);
+  button.position(windowWidth / 2 - 130, windowHeight / 2 + windowHeight / 10);
   button.mousePressed(playAll);
 
   restart = createButton("RESTART");
@@ -39,10 +39,10 @@ function setup() {
   restart.style('background-color', 'black');
   restart.style('color', 'gold')
   restart.style('padding', '15px');
-  restart.style('font-family', font)
+  restart.style('font-family', 'retro')
   restart.style('cursor', 'pointer')
   restart.style('border', '5px solid gold');
-  restart.position(windowWidth / 2 - 50,windowHeight / 10 * 9);
+  restart.position(windowWidth / 2 - 50, windowHeight / 10 * 9);
   restart.mousePressed(ricomincia);
 
 }
@@ -70,7 +70,7 @@ function draw() {
   rotateX(incr);
   rotateZ(incr);
   rotateY(incr);
-  translate(0,0,100+incr*500)
+  translate(0, 0, 100 + incr * 500)
   imageMode(CENTER)
   tint(255, opImg)
   image(tg, 0, 0, 400 + incr, 400 / 1.42 + incr)
@@ -112,6 +112,11 @@ function ricomincia() {
   sigla.pause();
   button.show()
   restart.hide()
+  i++
+
+  if (i >= 5) {
+    console.log("I don't understand if you like me so much that you restarted me more than 5 times or it's because I suck at you");
+  }
 }
 
 function windowResized() {
