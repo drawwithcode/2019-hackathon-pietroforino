@@ -4,6 +4,7 @@ let t1;
 let t2;
 var button;
 var op = 0;
+var op1 = 0;
 var opText = 255;
 var opImg = 0;
 var i = 0;
@@ -86,6 +87,15 @@ function draw() {
   rotateZ(frameCount * 0.001)
   sphere(600);
   pop();
+
+  push()
+  stroke(255, 255, 255, op1);
+  translate(windowWidth * 0.5, height * 0.45, -200);
+  rotateX(frameCount * 0.001*incr)
+  rotateY(frameCount * 0.001*incr)
+  rotateZ(frameCount * 0.001*incr)
+  sphere(1500);
+  pop();
 }
 
 function playAll() {
@@ -101,12 +111,14 @@ function playAll() {
   t1 = " "
   t2 = " "
   op = 50;
+  op1 = 25;
   opText = 0;
   opImg = 255;
 }
 
 function ricomincia() {
   op = 0;
+  op1 = 0;
   opText = 255;
   opImg = 0;
   sigla.pause();
