@@ -4,7 +4,8 @@ let t1;
 let t2;
 var button;
 var op = 0;
-
+var opText = 255;
+var opImg = 0;
 
 function preload(){
   sigla = loadSound('assets/TG1_bumper.mp3')
@@ -29,10 +30,10 @@ function setup() {
   //button to let the intro (and also sound) play
     button = createButton("LET'S GET IT STARTED");
     button.style('background-color', 'black');
-    button.style('color', 'white')
+    button.style('color', 'gold')
     button.style('padding', '15px');
-    button.style('border-radius', '5px');
-    button.style('border-color', 'white');
+    button.style('font-family', font)
+    button.style('border', '5px solid gold');
     button.position(windowWidth / 2-80, windowHeight / 2 + windowHeight / 10);
     button.mousePressed(playAll);
 }
@@ -42,16 +43,18 @@ function draw() {
   // text settigs and display
   textFont(font);
   textAlign(CENTER, CENTER);
-  textSize(60)
-  stroke('tomato')
-  strokeWeight(4)
-  fill('gold')
+  textSize(40)
+  fill(color(255, 208, 0, opText))
   t1 = "THE OLD IS NEW"
-  text(t1, 0, -100)
-  textSize(30)
-  strokeWeight(4)
+  text(t1, 0, -80)
+  textSize(20)
   t2 = "TRIBUTE TO TG1 BUMPER"
   text(t2, 0, 20)
+
+  imageMode(CENTER)
+  tint(255,opImg)
+  image(tg,0,0,400,400/1.42)
+
 
   noFill();
   stroke(255,255,255,op);
@@ -81,8 +84,7 @@ function vhs() {
 
 function playAll() {
 
-  t1 = ""
-  t2 = ""
+
   button.hide()
 
   if (sigla.isPlaying()) {
@@ -91,7 +93,10 @@ function playAll() {
     sigla.loop();
   }
 
-  op = 50
+  op = 50;
+  opText = 0;
+  opImg = 255
+
 
 
 
